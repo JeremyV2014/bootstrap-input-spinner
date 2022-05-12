@@ -184,6 +184,19 @@
                         event.preventDefault()
                         resetTimer()
                     }
+                }).on("mousewheel", function (event) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    if (event.deltaY > 0) {
+                        if (!$buttonDecrement.prop("disabled")) {
+                            stepHandling(step)
+                        }
+                    } else if (event.deltaY < 0) {
+                        if (!$buttonIncrement.prop("disabled")) {
+                            stepHandling(-step)
+                        }
+                    }
+                    resetTimer()
                 })
 
                 // decrement button
